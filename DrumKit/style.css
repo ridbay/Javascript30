@@ -1,8 +1,22 @@
-.keys {
+html {
+    font-size: 10px;
+    background: url(./drumkit.png) bottom center;
+    background-size: cover;
+  }
+  
+  body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .keys {
+    display: flex;
+    flex: 1;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-}
+  }
 
 .key {
     border: 4px solid black;
