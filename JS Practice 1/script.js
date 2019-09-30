@@ -15,23 +15,40 @@
     ];
     const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
     
-    document.querySelector('.investors').innerHTML = inventors.map((investor, idx)=> {
+
+
+    const displayInvestors = inventors.map((investor, idx)=> {
       const item = `<div> ${idx + 1}. first: ${investor.first}, last: ${investor.last}, year: ${investor.year}, passed: ${investor.passed} </div>`;
       return item;
     });
+    document.querySelector('.investors').innerHTML = displayInvestors.join(" ")
+
+
+
+
     // Array.prototype.filter()
+    // 1. Filter the list of inventors for those who were born in the 1500's
     const que1 =  "1. Filter the list of inventors for those who were born in the 1500's";
     document.querySelector('.que1').innerHTML = que1;
-    // document.getElementById("demo").innerHTML += 5 + 6;
     const filterArray = inventors.filter( inventor => inventor.year > 1500 && inventor.year < 1600);
-    const mapFilterArray = filterArray.map(array => `<li> ${array.first} </li>`).join('')
-    const filterList = document.querySelector('#filter');
+    const mapFilterArray = filterArray.map(array => `<li> ${array.first} </li>`).join(' ')
+    const filterList = document.querySelector('.filter');
     filterList.innerHTML = "<ul>" + mapFilterArray + "</ul>"
 
 
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    const que2 = "2. Give us an array of the inventors' first and last names";
+    document.querySelector('.que2').innerHTML = que2;
+    const mapInvestors = inventors.map(investor=> `<li>FirstName: ${investor.first} and LastName: ${investor.last}</li>`);
+    console.log(mapInvestors)
+    const displayMapList = document.querySelector('.map').innerHTML = `<ul>${mapInvestors.join("")}</ul>`;
+
+
+
+
+
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
     // Array.prototype.reduce()
