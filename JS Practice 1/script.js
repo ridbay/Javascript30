@@ -24,12 +24,12 @@
     document.querySelector('.investors').innerHTML = displayInvestors.join(" ")
 
 
-
+const setHeading = (que, id) => (document.querySelector(`.que${id}`).innerHTML = que)
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     const que1 =  "1. Filter the list of inventors for those who were born in the 1500's";
-    document.querySelector('.que1').innerHTML = que1;
+    setHeading(que1, 1);
     const filterArray = inventors.filter( inventor => inventor.year > 1500 && inventor.year < 1600);
     const mapFilterArray = filterArray.map(array => `<li> ${array.first} </li>`).join(' ')
     const filterList = document.querySelector('.filter');
@@ -40,24 +40,43 @@
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
     const que2 = "2. Give us an array of the inventors' first and last names";
-    document.querySelector('.que2').innerHTML = que2;
+    setHeading(que2, 2);
     const mapInvestors = inventors.map(investor=> `<li>FirstName: ${investor.first} and LastName: ${investor.last}</li>`);
-    console.log(mapInvestors)
     const displayMapList = document.querySelector('.map').innerHTML = `<ul>${mapInvestors.join("")}</ul>`;
-
-
-
-
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const que3 = `3. Sort the inventors by birthdate, oldest to youngest`;
+    setHeading(que3, 3);
+    const sortInvestorsByBD = investors.sort((a,b)=> {
+      
+    })
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+
+    const que4 = `4. How many years did all the inventors live?`;
+    setHeading(que4, 4);
     // 5. Sort the inventors by years lived
+    const que5 = `5. Sort the inventors by years lived`;
+    setHeading(que5, 5);
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    const que6 = `6. create a list of Boulevards in Paris that contain 'de' anywhere in the name; https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris`;
+    setHeading(que6, 6);
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    const que7 = `7. Sort the people alphabetically by last name`;
+    setHeading(que7, 7);
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+
+    const que8 = `8. Sum up the instances of each of these`;
+    setHeading(que8, 8);
+
+
+
+
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
