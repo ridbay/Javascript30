@@ -17,40 +17,61 @@
     
 
 
-    const displayInvestors = inventors.map((investor, idx)=> {
-      const item = `<div> ${idx + 1}. first: ${investor.first}, last: ${investor.last}, year: ${investor.year}, passed: ${investor.passed} </div>`;
+    const displayInventors = inventors.map((inventor, idx)=> {
+      const item = `<div> ${idx + 1}. first: ${inventor.first}, last: ${inventor.last}, year: ${inventor.year}, passed: ${inventor.passed} </div>`;
       return item;
     });
-    document.querySelector('.investors').innerHTML = displayInvestors.join(" ")
+    document.querySelector('.inventors').innerHTML = displayInventors.join(" ");
 
 
-const setHeading = (que, id) => (document.querySelector(`.que${id}`).innerHTML = que)
+const setHeading = (que, id) => (document.querySelector(`.que${id}`).innerHTML = que);
+
+// ${otherParams}: ${array.otherParams}
+const displayResults = (taskArray, className, otherParams = '1') => {
+  if (otherParams = '') {
+    const toMap = taskArray.map(array => `<li>FirstName: ${array.first}</li>`).join(" ")
+    const display = document.querySelector(`.${className}`).innerHTML = "<ul>" + toMap + "</ul>"
+    return display;
+  } else {
+    const toMap = taskArray.map(array => `<li>FirstName: ${array.first} ${otherParams}: ${array.otherParams}</li>`).join(" ")
+    const display = document.querySelector(`.${className}`).innerHTML = "<ul>" + toMap + "</ul>"
+    return display;
+  }
+}
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     const que1 =  "1. Filter the list of inventors for those who were born in the 1500's";
     setHeading(que1, 1);
     const filterArray = inventors.filter( inventor => inventor.year > 1500 && inventor.year < 1600);
-    const mapFilterArray = filterArray.map(array => `<li> ${array.first} </li>`).join(' ')
-    const filterList = document.querySelector('.filter');
-    filterList.innerHTML = "<ul>" + mapFilterArray + "</ul>"
-
+    // const mapFilterArray = filterArray.map(array => `<li> ${array.first} </li>`).join(' ')
+    displayResults(filterArray, "filter");
+    // const filterList = document.querySelector('.filter').innerHTML = "<ul>" + mapFilterArray + "</ul>"
+    
 
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
     const que2 = "2. Give us an array of the inventors' first and last names";
     setHeading(que2, 2);
-    const mapInvestors = inventors.map(investor=> `<li>FirstName: ${investor.first} and LastName: ${investor.last}</li>`);
-    const displayMapList = document.querySelector('.map').innerHTML = `<ul>${mapInvestors.join("")}</ul>`;
+    const mapInventors = inventors.map(inventor=> `<li>FirstName: ${inventor.first} and LastName: ${inventor.last}</li>`);
+    document.querySelector('.map').innerHTML = `<ul>${mapInventors.join("")}</ul>`;
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
     const que3 = `3. Sort the inventors by birthdate, oldest to youngest`;
     setHeading(que3, 3);
-    const sortInvestorsByBD = investors.sort((a,b)=> {
-      
-    })
+    const sortInventorsByBD = inventors.sort((a,b) => {
+      if(a.year > b.year){
+        return 1;
+      } else {
+        return -1
+      }
+    });
+    mapSortedInventors = sortInventorsByBD.map(inventor => `<li>Name: ${inventor.first} | Year: ${inventor.year}</li>`);
+
+    document.querySelector('.sortByBD').innerHTML = `<ul>${mapSortedInventors.join(" ")}</ul>`;
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
