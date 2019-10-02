@@ -108,14 +108,27 @@ const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bik
 const que8 = `8. Sum up the instances of each of these`;
 setHeading(que8, 8);
 
-const transportation = data.reduce((obj, item)=> {
-  if(!obj[item]){
-    obj[item] = 0;
+const transportation = data.reduce((acc, curr)=> {
+  if(!acc[curr]){
+    acc[curr] = 0;
   }
-  obj[item]++;
-  return obj;
+  acc[curr]++;
+  return acc;
 }, {})
 
-console.log(Object.keys(transportation))
-// document.querySelector('.reduce').innerHTML = [...transportation];
+const result = Object.keys(transportation).map(key => {
+  const newArray = [key, transportation[key]];
+  return newArray;
+})
+
+for (let key in transportation) {
+  if (transportation.hasOwnProperty(key)) {
+
+    const newItem = `<li>Number of ${key} is ${transportation[key]}</li>`
+    
+    document.querySelector('.reduce').innerHTML += newItem;
+  }
+}
+
+
 
