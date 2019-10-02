@@ -97,18 +97,25 @@ const alpha = people.sort((a,b)=> {
   const [bFirst, bLast] = b.split(', ');
   return aLast > bLast ? 1 : -1;
 } )
-console.log(alpha)
-const list = alpha.map(array => `<li>LastName: ${array.split(', ')[1]} | FirstName: ${array.split(', ')[0]}</li>`);
+const list = alpha.map(array => `<li>LastName: ${array.split(', ')[1]} | FirstName: ${array.split(', ')[0]}</li>`).join(" ");
 document.querySelector('.people').innerHTML = list;
 
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
 const que8 = `8. Sum up the instances of each of these`;
 setHeading(que8, 8);
 
+const transportation = data.reduce((obj, item)=> {
+  if(!obj[item]){
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj;
+}, {})
 
+console.log(Object.keys(transportation))
+// document.querySelector('.reduce').innerHTML = [...transportation];
 
-
-const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
