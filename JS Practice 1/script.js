@@ -92,9 +92,14 @@ displayFullArrayListInDom(sortByYear, 'sortByYear');
 
 const que7 = `7. Sort the people alphabetically by last name`;
 setHeading(que7, 7);
-const peopleArray = [...people];
-console.log(peopleArray.split(", "));
-// displayFullArrayListInDom(people,"people")
+const alpha = people.sort((a,b)=> {
+  const [aFirst, aLast] = a.split(', ');
+  const [bFirst, bLast] = b.split(', ');
+  return aLast > bLast ? 1 : -1;
+} )
+console.log(alpha)
+const list = alpha.map(array => `<li>LastName: ${array.split(', ')[1]} | FirstName: ${array.split(', ')[0]}</li>`);
+document.querySelector('.people').innerHTML = list;
 
 
 // 8. Reduce Exercise
