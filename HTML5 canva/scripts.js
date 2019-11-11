@@ -7,6 +7,9 @@ ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 ctx.lineWidth = 100;
 
+//Photoshop blend mode
+ctx.globalCompositeOperation = 'multiply';
+
 
 let isDrawing = false;
 let lastX = 0;
