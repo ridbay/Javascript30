@@ -8,4 +8,13 @@ ctx.lineCap = 'round';
 
 
 let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
 
+
+function draw(e){
+    if(!isDrawing) return; //Stop the function from running when they are not moused down
+    console.log(e);
+}
+
+canvas.addEventListener('mousemove', draw);
